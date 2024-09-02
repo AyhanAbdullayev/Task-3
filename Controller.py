@@ -15,9 +15,12 @@ def index():
 
 def get_Movie(movie_id):
     movie = Movie.query.get(movie_id) 
-
-     
-
+    all_movie = Movie.query.all()
+    Message = None
+    if movie_id <= 0 or movie_id > len(all_movie) :
+        Message = "Movie Not Found "
+        return Message
     return render_template("movie.html",movie=movie)
+
     
     
